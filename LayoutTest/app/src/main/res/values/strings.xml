@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">LayoutTest</string>
     <string name="sampleString">이것은 소리없는 아우성</string>
+    <string name="btnString">클릭클릭</string>
 </resources>
