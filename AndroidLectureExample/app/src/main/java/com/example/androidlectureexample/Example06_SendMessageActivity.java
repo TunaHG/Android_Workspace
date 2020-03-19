@@ -20,7 +20,7 @@ public class Example06_SendMessageActivity extends AppCompatActivity {
         Button closeBtn = findViewById(R.id.closeBtn);
 
         Intent i = getIntent();
-        String msg = i.getExtras().get("sendMSG").toString();
+        String msg = (String)i.getExtras().get("sendMSG");
         tv.setText(msg);
 
         closeBtn.setOnClickListener(new View.OnClickListener() {

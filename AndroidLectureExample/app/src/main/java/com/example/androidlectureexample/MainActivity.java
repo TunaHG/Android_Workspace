@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                                         "com.example.androidlectureexample.Example06_SendMessageActivity");
                                 i.setComponent(cname);
                                 // 데이터를 전달해서 Activity를 시작
-                                i.putExtra("sendMSG", edittext.getText());
+                                i.putExtra("sendMSG", edittext.getText().toString());
                                 startActivity(i);
                             }
                         });
