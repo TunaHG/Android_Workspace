@@ -10,6 +10,8 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     Button _01_linearlayoutBtn;
+    Button _02_widgetBtn;
+    Button _03_EventBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,32 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent();
                 ComponentName cname = new ComponentName("com.example.androidlectureexample",
                         "com.example.androidlectureexample.Example01_LayoutActivity");
+                i.setComponent(cname);
+                startActivity(i);
+            }
+        });
+
+        _02_widgetBtn = findViewById(R.id._02_widgetBtn);
+
+        _02_widgetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example02_Widget");
+                i.setComponent(cname);
+                startActivity(i);
+            }
+        });
+
+        _03_EventBtn = findViewById(R.id._03_EventBtn);
+
+        _03_EventBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example03_Event");
                 i.setComponent(cname);
                 startActivity(i);
             }

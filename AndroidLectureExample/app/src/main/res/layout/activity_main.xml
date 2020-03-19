@@ -12,9 +12,28 @@
         android:textAlignment="center"
         android:gravity="center_horizontal"
         android:textSize="10pt"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="01.LinearLayout 예제"
         android:id="@+id/_01_linearlayoutBtn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="02.Widget 예제"
+        android:id="@+id/_02_widgetBtn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="03.Event 처리 예제"
+        android:id="@+id/_03_EventBtn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="04.Activity Event 처리 예제"
+        android:id="@+id/_04_ActivityEventBtn"/>
 </LinearLayout>
