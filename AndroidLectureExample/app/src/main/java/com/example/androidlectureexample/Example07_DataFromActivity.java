@@ -2,11 +2,13 @@ package com.example.androidlectureexample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import java.lang.reflect.Array;
@@ -35,9 +37,9 @@ public class Example07_DataFromActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(),
                 android.R.layout.simple_spinner_dropdown_item, list);
         // Data를 어떻게 보여줄 것인지를 가지고 있다.
+        // list가 가진 Data를 spinner에서 dropdown형식으로 보여주겠다는 의미다.
 
         // Adapter를 Spinner에게 부착
-        // Data를 Dropdown형식으로 표현하는 Spinner가 됨
         spinner.setAdapter(adapter);
 
         // Widget에서 Spinner 중 하나를 클릭하면 Item Select Event가 발생함
@@ -54,6 +56,19 @@ public class Example07_DataFromActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        Button sendBtn = findViewById(R.id.sendDataBtn);
+        sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("resultValue", result);
+                setResult(7000, returnIntent);
+                // resultCode는 requestCode와 마찬가지인 개념;
+
+                Example07_DataFromActivity.this.finish();
             }
         });
     }

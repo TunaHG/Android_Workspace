@@ -1,5 +1,6 @@
 package com.example.androidlectureexample;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private EditText edittext;
@@ -145,5 +147,14 @@ public class MainActivity extends AppCompatActivity {
                 // requestCode는 어떤값이든 다른 requestCode와 겹치지 않는 Unique한 값이면 됨.
             }
         });
+    } // end of onCreate()
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 3000 && resultCode == 7000) {
+            String msg = (String)data.getExtras().get("resultValue");
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        }
     }
 }
