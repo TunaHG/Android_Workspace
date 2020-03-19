@@ -2,14 +2,17 @@ package com.example.androidlectureexample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-
+    private EditText edittext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +83,48 @@ public class MainActivity extends AppCompatActivity {
                         "com.example.androidlectureexample.Example05_SwipeEventActivity");
                 i.setComponent(cname);
                 startActivity(i);
+            }
+        });
+
+        Button _06_SendMessageBtn = findViewById(R.id._06_SendMessageBtn);
+
+        _06_SendMessageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Alert창(Dialog)을 이용해서 문자열을 입력받고
+                // 입력받은 문자열을 다음 Activity로 전달
+
+                // 사용자가 문자열을 입력할 수 있는 Widget이 필요
+                edittext = new EditText(MainActivity.this);
+
+                // AlertDialog를 생성
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Activity 데이터 전달");
+                builder.setMessage("다음 Activity에 전달할 내용을 입력하세요.");
+                builder.setView(edittext);
+                builder.setPositiveButton("전달",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // 전달을 눌렀을 때 수행되는 이벤트 처리
+                                Intent i = new Intent();
+                                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                                        "com.example.androidlectureexample.Example06_SendMessageActivity");
+                                i.setComponent(cname);
+                                // 데이터를 전달해서 Activity를 시작
+                                i.putExtra("sendMSG", edittext.getText());
+                                startActivity(i);
+                            }
+                        });
+                builder.setNegativeButton("취소",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // 취소를 눌렀을 때 수행되는 이벤트
+                                // 특별한 처리를 안하면 Dialog가 종료되고 끝남
+                            }
+                        });
+                builder.show();
             }
         });
     }

@@ -42,4 +42,10 @@
         android:layout_height="wrap_content"
         android:text="05.Swipe Event 처리 예제"
         android:id="@+id/_05_SwipeEventBtn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="06.Activitiy에게 Message 전달 예제"
+        android:id="@+id/_06_SendMessageBtn"/>
 </LinearLayout>

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Example05_SwipeEventActivity"></activity>
+        <activity android:name=".Example06_SendMessageActivity"></activity>
+        <activity android:name=".Example05_SwipeEventActivity" />
         <activity android:name=".Example04_TouchEventActivity" />
         <activity android:name=".Example03_EventActivity" />
         <activity android:name=".Example02_WidgetActivity" />
