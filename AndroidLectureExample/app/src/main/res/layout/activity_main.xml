@@ -36,4 +36,10 @@
         android:layout_height="wrap_content"
         android:text="04.Activity Event 처리 예제"
         android:id="@+id/_04_ActivityEventBtn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="05.Swipe Event 처리 예제"
+        android:id="@+id/_05_SwipeEventBtn"/>
 </LinearLayout>

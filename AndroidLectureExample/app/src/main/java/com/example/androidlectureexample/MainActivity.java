@@ -9,17 +9,13 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private Button _01_linearlayoutBtn;
-    private Button _02_widgetBtn;
-    private Button _03_EventBtn;
-    private Button _04_ActivityEventBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        _01_linearlayoutBtn = findViewById(R.id._01_linearlayoutBtn);
+        Button _01_linearlayoutBtn = findViewById(R.id._01_linearlayoutBtn);
 
         _01_linearlayoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,33 +31,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        _02_widgetBtn = findViewById(R.id._02_widgetBtn);
+        Button _02_widgetBtn = findViewById(R.id._02_widgetBtn);
 
         _02_widgetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
                 ComponentName cname = new ComponentName("com.example.androidlectureexample",
-                        "com.example.androidlectureexample.Example02_Widget");
+                        "com.example.androidlectureexample.Example02_WidgetActivity");
                 i.setComponent(cname);
                 startActivity(i);
             }
         });
 
-        _03_EventBtn = findViewById(R.id._03_EventBtn);
+        Button _03_EventBtn = findViewById(R.id._03_EventBtn);
 
         _03_EventBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
                 ComponentName cname = new ComponentName("com.example.androidlectureexample",
-                        "com.example.androidlectureexample.Example03_Event");
+                        "com.example.androidlectureexample.Example03_EventActivity");
                 i.setComponent(cname);
                 startActivity(i);
             }
         });
 
-        _04_ActivityEventBtn = findViewById(R.id._04_ActivityEventBtn);
+        Button _04_ActivityEventBtn = findViewById(R.id._04_ActivityEventBtn);
 
         _04_ActivityEventBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +65,19 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent();
                 ComponentName cname = new ComponentName("com.example.androidlectureexample",
                         "com.example.androidlectureexample.Example04_TouchEventActivity");
+                i.setComponent(cname);
+                startActivity(i);
+            }
+        });
+
+        Button _05_SwipeEventBtn = findViewById(R.id._05_SwipeEventBtn);
+
+        _05_SwipeEventBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example05_SwipeEventActivity");
                 i.setComponent(cname);
                 startActivity(i);
             }
