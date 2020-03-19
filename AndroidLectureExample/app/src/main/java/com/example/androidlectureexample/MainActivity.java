@@ -127,5 +127,23 @@ public class MainActivity extends AppCompatActivity {
                 builder.show();
             }
         });
+
+        Button _07_DataFromBtn = findViewById(R.id._07_DataFromBtn);
+
+        _07_DataFromBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example07_DataFromActivity");
+                i.setComponent(cname);
+
+                // 새로 생성되는 Activity로부터 데이터를 받아오기 위한 용도
+                // 두 번째 Activity가 finish되는 순간 데이터를 받음
+                startActivityForResult(i, 3000);
+                // 어떤 Activity로부터 데이터를 받는지 알기 위해 requestCode가 필요
+                // requestCode는 어떤값이든 다른 requestCode와 겹치지 않는 Unique한 값이면 됨.
+            }
+        });
     }
 }
