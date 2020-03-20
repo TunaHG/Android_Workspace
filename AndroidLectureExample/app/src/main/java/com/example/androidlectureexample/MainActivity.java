@@ -160,6 +160,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button _09_CounterLogBtn = findViewById(R.id._09_CounterLogBtn);
+
+        _09_CounterLogBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example09_CounterLogActivity");
+                i.setComponent(cname);
+                startActivity(i);
+            }
+        });
     } // end of onCreate()
 
     @Override

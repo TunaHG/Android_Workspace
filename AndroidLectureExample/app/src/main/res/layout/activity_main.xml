@@ -60,4 +60,10 @@
         android:layout_height="wrap_content"
         android:text="08.Activity ANR 예제"
         android:id="@+id/_08_ANRBtn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="09.Counter Log 예제(Thread)"
+        android:id="@+id/_09_CounterLogBtn"/>
 </LinearLayout>
