@@ -173,6 +173,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button _10_CounterLogProgressBtn = findViewById(R.id._10_CounterLogProgressBtn);
+
+        _10_CounterLogProgressBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example10_CounterLogProgressActivity");
+                i.setComponent(cname);
+                startActivity(i);
+            }
+        });
     } // end of onCreate()
 
     @Override

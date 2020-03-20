@@ -66,4 +66,10 @@
         android:layout_height="wrap_content"
         android:text="09.Counter Log 예제(Thread)"
         android:id="@+id/_09_CounterLogBtn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="09.Counter Log 예제(ProgressBar)"
+        android:id="@+id/_10_CounterLogProgressBtn"/>
 </LinearLayout>
