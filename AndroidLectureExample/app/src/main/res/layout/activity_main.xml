@@ -52,6 +52,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="07. Data를 받아오는 예제"
+        android:text="07.Activity로부터 Data전달 예제"
         android:id="@+id/_07_DataFromBtn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="08.Activity ANR 예제"
+        android:id="@+id/_08_ANRBtn"/>
 </LinearLayout>

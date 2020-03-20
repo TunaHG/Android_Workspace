@@ -147,6 +147,19 @@ public class MainActivity extends AppCompatActivity {
                 // requestCode는 어떤값이든 다른 requestCode와 겹치지 않는 Unique한 값이면 됨.
             }
         });
+
+        Button _08_ANRBtn = findViewById(R.id._08_ANRBtn);
+
+        _08_ANRBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example08_ANRActivity");
+                i.setComponent(cname);
+                startActivity(i);
+            }
+        });
     } // end of onCreate()
 
     @Override
