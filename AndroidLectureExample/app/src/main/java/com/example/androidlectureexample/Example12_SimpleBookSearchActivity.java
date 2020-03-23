@@ -9,9 +9,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -48,6 +51,19 @@ public class Example12_SimpleBookSearchActivity extends AppCompatActivity {
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
                 // Thread가 보내준 데이터로 ListView를 채우는 코드
+                // Thread가 보내준 Message에서 Bundle을 꺼낸다.
+                Bundle bundle = msg.getData();
+                // Bundle에서 key값을 이용하여 Data 추출
+                String[] booklist = (String[])bundle.get("BOOKLIST");
+
+                // ListView 사용은 Spinner 사용과 비슷
+                // ListView에 데이터를 설정하려면 Adapter가 있어야함
+                // Adapter에 데이터를 설정하고 ListView에 부착
+                ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(),
+                        android.R.layout.simple_list_item_1,
+                        booklist);
+                // ListView에 Adapter 부착
+                searchList.setAdapter(adapter);
             }
         };
 
@@ -117,6 +133,27 @@ class BookSearchRunnable implements Runnable {
             Log.i("BookSearch", "얻어온 내용은 : " + responseTxt.toString());
 
             // 가져온 데이터(문자열)를 자료구조화 시켜서 안드로이드 앱에 적용하는 방법
+            // 일반적으로 서버쪽 Web Program은 XML이나 JSON으로 결과데이터를 제공
+            // JSON parsing library를 이용하여 JSON을 Java의 자료구조로 변경
+            // 가장 대표적인 Library중 하나인 JACKSON Library를 이용
+
+            // JSON Library가 있어야 사용할 수 있으니 라이브러리를 설치
+            // Gradle Scripts - build.gradle(Module: app) - dependencies
+
+            // JACKSON library 사용
+            ObjectMapper mapper = new ObjectMapper();
+            String[] resultArr = mapper.readValue(responseTxt.toString(), String[].class);
+            // 얻어온 JSON문자열 데이터를 Java의 String 배열로 변환
+
+            // 최종 결과 데이터를 Activity에게 전달 (UI Thread에게 전달하여 화면제어)
+            // 1. Bundle에 전달할 데이터 부착
+            Bundle bundle = new Bundle();
+            bundle.putStringArray("BOOKLIST", resultArr);
+            // 2. Message를 만들어서 Bundle을 Message에 부착
+            Message msg = new Message();
+            msg.setData(bundle);
+            // 3. Handler를 이용해서 Message를 Activity에게 전달
+            handler.sendMessage(msg);
         } catch (Exception e){
             Log.i("BookSearch", e.toString());
         }
