@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Example11_CounterLogHandlerActivity"></activity>
+        <activity android:name=".Example12_SimpleBookSearchActivity"></activity>
+        <activity android:name=".Example11_CounterLogHandlerActivity" />
         <activity android:name=".Example10_CounterLogProgressActivity" />
         <activity android:name=".Example09_CounterLogActivity" />
         <activity android:name=".Example08_ANRActivity" />

@@ -81,5 +81,11 @@
             android:layout_height="wrap_content"
             android:text="11.Counter Log 예제(Handler)"
             android:id="@+id/_11_CounterLogHandlerBtn"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12.도서검색 프로그램(간단)"
+            android:id="@+id/_12_SimpleBookSearchBtn"/>
     </LinearLayout>
 </ScrollView>
