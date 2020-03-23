@@ -4,11 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +23,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.Map;
 
 public class Example12_SimpleBookSearchActivity extends AppCompatActivity {
 
@@ -74,6 +79,21 @@ public class Example12_SimpleBookSearchActivity extends AppCompatActivity {
                 BookSearchRunnable runnable = new BookSearchRunnable(handler, searchTitle.getText().toString());
                 Thread t = new Thread(runnable);
                 t.start();
+            }
+        });
+
+        // ListView 클릭시 해당 데이터를 가지고 Detail Activity로 넘어감
+        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String title = (String)parent.getAdapter().getItem(position);
+
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example12_1_BookDetailActivity");
+                i.setComponent(cname);
+                i.putExtra("bookTitle", title);
+                startActivity(i);
             }
         });
     }
