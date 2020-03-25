@@ -212,6 +212,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button _13_ExpandBookSearchBtn = findViewById(R.id._13_ExpandBookSearchBtn);
+
+        _13_ExpandBookSearchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example13_ExpandBookSearchActivity");
+                i.setComponent(cname);
+                startActivity(i);
+            }
+        });
     } // end of onCreate()
 
     @Override

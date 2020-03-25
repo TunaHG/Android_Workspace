@@ -81,21 +81,6 @@ public class Example12_SimpleBookSearchActivity extends AppCompatActivity {
                 t.start();
             }
         });
-
-        // ListView 클릭시 해당 데이터를 가지고 Detail Activity로 넘어감
-        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String title = (String)parent.getAdapter().getItem(position);
-
-                Intent i = new Intent();
-                ComponentName cname = new ComponentName("com.example.androidlectureexample",
-                        "com.example.androidlectureexample.Example12_1_BookDetailActivity");
-                i.setComponent(cname);
-                i.putExtra("bookTitle", title);
-                startActivity(i);
-            }
-        });
     }
 }
 

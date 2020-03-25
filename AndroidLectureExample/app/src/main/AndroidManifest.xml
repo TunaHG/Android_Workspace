@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Example12_1_BookDetailActivity"></activity>
+        <activity android:name=".Example14_DetailBookSearchActivity"></activity>
+        <activity android:name=".Example13_ExpandBookSearchActivity" />
         <activity android:name=".Example12_SimpleBookSearchActivity" />
         <activity android:name=".Example11_CounterLogHandlerActivity" />
         <activity android:name=".Example10_CounterLogProgressActivity" />
