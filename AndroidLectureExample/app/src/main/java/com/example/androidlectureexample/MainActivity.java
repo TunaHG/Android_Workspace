@@ -238,6 +238,29 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        /*
+        App이 실행되었다고 해서 항상 Activity가 보이지 않음
+        대표적인 경우 카톡, 멜론 등 Activity가 보이지 않아도 기능이 수행되는 경우가 있음
+        Service는 화면이 없는 Activity라고 생각할 수 있음
+        Activity의 Life Cycle은 다음과 같은 반면
+            onCreate() -> onStart() -> onResume() -> onPause() -> onStop() -> onDestroy()
+        Service의 Life Cycle은 다음과 같음 (Activity보다 짧음)
+            onCreate() -> onStartCommand() -> onDestroy()
+        눈에 보이지 않기 때문에 Background에서 로직처리하는데 이용
+        */
+        Button _16_ServiceLifecycleBtn = findViewById(R.id._16_ServiceLifecycleBtn);
+
+        _16_ServiceLifecycleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example16_ServiceLifecycleActivity");
+                i.setComponent(cname);
+                startActivity(i);
+            }
+        });
     } // end of onCreate()
 
     @Override

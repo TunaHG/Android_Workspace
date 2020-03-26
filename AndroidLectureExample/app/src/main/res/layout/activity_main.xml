@@ -99,5 +99,11 @@
             android:layout_height="wrap_content"
             android:text="15.Implicit Intent를 이용한 Activity"
             android:id="@+id/_15_ImplicitIntentBtn"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="16.Service Lifecycle"
+            android:id="@+id/_16_ServiceLifecycleBtn"/>
     </LinearLayout>
 </ScrollView>

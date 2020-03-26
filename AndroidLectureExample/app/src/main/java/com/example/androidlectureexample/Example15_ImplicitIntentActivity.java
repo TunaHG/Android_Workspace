@@ -1,10 +1,12 @@
 package com.example.androidlectureexample;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -13,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class Example15_ImplicitIntentActivity extends AppCompatActivity {
 
@@ -93,6 +96,28 @@ public class Example15_ImplicitIntentActivity extends AppCompatActivity {
                         // 권한 설정을 거부한 적이 있는지 없는지에 대해 확인
                         if(shouldShowRequestPermissionRationale(Manifest.permission.CALL_PHONE)){
                             // 권한을 거부한 적이 있는 경우
+                            // 임의로 App의 권한을 끄거나 혹은 권한 요청 화면에서 거절을 클릭했을 경우
+                            // 경고창을 띄워 정말로 거절할 것인지 물어본다.
+                            AlertDialog.Builder dialog =
+                                    new AlertDialog.Builder(Example15_ImplicitIntentActivity.this);
+                            dialog.setTitle("권한 요청에 대한 Dialog");
+                            dialog.setMessage("전화걸기 기능 필요");
+                            dialog.setPositiveButton("네",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            requestPermissions(new String[]{Manifest.permission.CALL_PHONE},
+                                                    1000);
+                                        }
+                                    });
+                            dialog.setNegativeButton("아니오",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            // 할일이 없다
+                                        }
+                                    });
+                            dialog.show();
                         } else {
                             // 권한을 거부한 적이 없는 경우 (처음 접속한 경우)
                             // 권한 설정창이 전화, 카메라 등등 여러개를 한번에 받도록 String[]로 가능하다.
