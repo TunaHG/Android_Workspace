@@ -93,5 +93,11 @@
             android:layout_height="wrap_content"
             android:text="13.도서검색 프로그램(확장)"
             android:id="@+id/_13_ExpandBookSearchBtn"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="15.Implicit Intent를 이용한 Activity"
+            android:id="@+id/_15_ImplicitIntentBtn"/>
     </LinearLayout>
 </ScrollView>
