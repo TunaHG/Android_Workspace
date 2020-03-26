@@ -21,4 +21,10 @@
         android:layout_height="wrap_content"
         android:text="Browser(Chrome) 호출"
         android:id="@+id/browserBtn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="전화 걸기 기능 호출"
+        android:id="@+id/callBtn"/>
 </LinearLayout>
