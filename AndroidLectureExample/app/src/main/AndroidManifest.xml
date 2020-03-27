@@ -14,9 +14,16 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <service
-            android:name=".Example16Sub_LifecycleService"
+            android:name=".Example17Sub_DataTransferService"
             android:enabled="true"
             android:exported="true"></service>
+
+        <activity android:name=".Example17_ServiceDataTransferActivity" />
+
+        <service
+            android:name=".Example16Sub_LifecycleService"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity android:name=".Example16_ServiceLifecycleActivity" />
         <activity android:name=".Example15Sub_ImplicitIntentActivity">
