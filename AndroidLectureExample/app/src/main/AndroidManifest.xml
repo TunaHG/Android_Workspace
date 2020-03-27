@@ -14,9 +14,16 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <service
-            android:name=".Example17Sub_DataTransferService"
+            android:name=".Example18Sub_KakaoBookSearchService"
             android:enabled="true"
             android:exported="true"></service>
+
+        <activity android:name=".Example18_KakaoBookSearchActivity" />
+
+        <service
+            android:name=".Example17Sub_DataTransferService"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity android:name=".Example17_ServiceDataTransferActivity" />
 
