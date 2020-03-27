@@ -5,9 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Example18_KakaoBookSearchActivity extends AppCompatActivity {
     EditText kakaoET;
@@ -34,5 +38,17 @@ public class Example18_KakaoBookSearchActivity extends AppCompatActivity {
                 startService(intent);
             }
         });
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        ArrayList<String> booksTitle = (ArrayList<String>)intent.getExtras().get("BOOKRESULT");
+
+        ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(),
+                android.R.layout.simple_list_item_1,
+                booksTitle);
+
+        kakaoBookList.setAdapter(adapter);
     }
 }
