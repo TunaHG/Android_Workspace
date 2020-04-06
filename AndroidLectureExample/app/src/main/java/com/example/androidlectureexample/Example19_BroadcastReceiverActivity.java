@@ -66,5 +66,15 @@ public class Example19_BroadcastReceiverActivity extends AppCompatActivity {
                 unregisterReceiver(bReceiver);
             }
         });
+
+        Button sendBroadcastBtn = findViewById(R.id.sendBroadcastBtn);
+        sendBroadcastBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Button을 Click하면 Broadcast를 임의로 발생
+                Intent i = new Intent("MY_BROADCAST_SIGNAL");
+                sendBroadcast(i);
+            }
+        });
     }
 }
