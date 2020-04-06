@@ -6,10 +6,12 @@ import androidx.core.app.NotificationCompat;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.RingtoneManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -81,11 +83,44 @@ public class Example21_BRNotiActivity extends AppCompatActivity {
 
                         // 중복되지 않는 상수값을 얻기위해 사용 (requestID가 중복되지않아야함)
                         int requestID = (int)System.currentTimeMillis();
+
+                        // PendingIntent를 생성해서 사용
+                        // 위에서 생성한 Intent를 가지고 PendingIntent를 생성
+                        PendingIntent pIntent =
+                                PendingIntent.getActivity(getApplicationContext(),
+                                        requestID, nIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                        // Builder를 이용해서 최종적으롱 Notification을 생성
+                        builder.setContentTitle("Noti Title");
+                        builder.setContentText("Noti Text");
+                        // 알림의 기본사운드, 기본진동 설정
+                        builder.setDefaults(Notification.DEFAULT_ALL);
+                        // 알림 터치시 반응 후 삭제
+                        builder.setAutoCancel(true);
+                        builder.setSound(RingtoneManager.getDefaultUri(
+                                RingtoneManager.TYPE_NOTIFICATION
+                        ));
+                        // 작은 아이콘 설정
+                        builder.setSmallIcon(android.R.drawable.btn_star);
+
+                        builder.setContentIntent(pIntent);
+
+                        // 실제로 Notification을 띄우는 코드
+                        nManager.notify(0, builder.build());
                     }
                 };
 
                 // 3. 생성한 Receiver를 Filter와 함께 등록
                 registerReceiver(br, filter);
+            }
+        });
+
+        Button sendSignalBtn = findViewById(R.id.sendSignalBtn);
+        sendSignalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent("MY_NOTI_SIGNAL");
+                sendBroadcast(i);
             }
         });
     }
