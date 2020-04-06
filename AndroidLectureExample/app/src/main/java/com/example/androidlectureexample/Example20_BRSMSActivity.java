@@ -7,10 +7,12 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 /*
  * 1. 우리 App이 휴대단말로 온 문자메시지를 처리
@@ -27,14 +29,22 @@ import android.util.Log;
  *    => 생성된 후 intent-filter를 이용해서 어떤 Broadcast Signal을 수신할지 설정
  *    SMS문자가 오면 Broadcast Receiver가 이 문자를 받아서 Activity에 전달
  *
- * 
+ *    Broadcast Receiver에서 Activity로 Intent를 통해서 데이터가 전달
+ *    => Activity는 Method를 이용해서 Intent를 받음 ( onNewIntent() )
+ *
  */
 public class Example20_BRSMSActivity extends AppCompatActivity {
-
+    private TextView smsSenderTV;
+    private TextView smsMessageTV;
+    private TextView smsDateTV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example20_br_sms);
+
+        smsSenderTV = findViewById(R.id.smsSenderTV);
+        smsMessageTV = findViewById(R.id.smsMessageTV);
+        smsDateTV = findViewById(R.id.smsDateTV);
 
         // 1. 사용자의 단말기 OS(Android Version)가 마쉬멜로우(6) 이후의 버전인지 check
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -91,5 +101,17 @@ public class Example20_BRSMSActivity extends AppCompatActivity {
                 Log.i("SMSTest", "보안설정 통과");
             }
         }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        // Broadcast Receiver가 전달한 Intent를 받음
+        // Intent안에 들어있는 정보를 화면에 출력
+        Bundle bundle = intent.getExtras();
+
+        smsSenderTV.setText(bundle.getString("sender"));
+        smsMessageTV.setText(bundle.getString("msg"));
+        smsDateTV.setText(bundle.getString("reDate"));
     }
 }
