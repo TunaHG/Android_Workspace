@@ -302,12 +302,26 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button _20_BRSMSBTn = findViewById(R.id._20_BRSMSBtn);
+
         _20_BRSMSBTn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
                 ComponentName cname = new ComponentName("com.example.androidlectureexample",
                         "com.example.androidlectureexample.Example20_BRSMSActivity");
+                i.setComponent(cname);
+                startActivity(i);
+            }
+        });
+
+        Button _21_BRNotiBtn = findViewById(R.id._21_BRNotiBtn);
+        
+        _21_BRNotiBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example21_BRNotiActivity");
                 i.setComponent(cname);
                 startActivity(i);
             }
