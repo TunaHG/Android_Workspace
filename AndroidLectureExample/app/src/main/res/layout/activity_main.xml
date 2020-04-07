@@ -135,5 +135,11 @@
             android:layout_height="wrap_content"
             android:text="21.Broadcast Receiver를 이용한 알림"
             android:id="@+id/_21_BRNotiBtn"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="22.SQLite Basic 실습"
+            android:id="@+id/_22_SQLiteBasicBtn"/>
     </LinearLayout>
 </ScrollView>
