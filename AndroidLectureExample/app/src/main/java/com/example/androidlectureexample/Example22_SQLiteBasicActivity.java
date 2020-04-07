@@ -33,7 +33,7 @@ public class Example22_SQLiteBasicActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Database 생성
-                // "dbName.db"라는 파일로 생성
+                // data > data > 우리 앱 > database에 "dbName.db"라는 파일로 생성
                 String dbName = dbNameET.getText().toString();
 
                 // MODE_PRIVATE : 0값, 일반적인 형태(읽고쓰기가 가능한)의 DB를 생성하거나 Open
