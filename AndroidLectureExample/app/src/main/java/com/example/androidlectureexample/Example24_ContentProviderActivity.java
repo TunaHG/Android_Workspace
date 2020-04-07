@@ -2,10 +2,15 @@ package com.example.androidlectureexample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 /*
  * Content Provider
@@ -33,10 +38,11 @@ class PersonDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
     // 초기에 데이터베이스가 생성되는 시점에 Table도 같이 생성
-    String sql = "CREATE TABLE IF NOT EXISTS " +
+        String sql = "CREATE TABLE IF NOT EXISTS " +
             "person( _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "name TEXT, age INTEGER, mobile TEXT)";
         db.execSQL(sql);
+        Log.i("DBTest", "Table Created");
 }
 
     @Override
@@ -51,5 +57,26 @@ public class Example24_ContentProviderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example24_content_provider);
+
+        Button CPEmpInsertBtn = findViewById(R.id.CPEmpInsertBtn);
+        CPEmpInsertBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 원래는 입력된 데이터를 가지고와서 CP를 이용해서 입력처리
+                // CP를 찾아야함
+                String uriString = "content://com.exam.person.provider/person";
+
+                Uri uri = new Uri.Builder().build().parse(uriString);
+
+                // HashMap형태로 데이터베이스에 입력할 데이터를 저장
+                ContentValues values = new ContentValues();
+                values.put("name", "홍길동");
+                values.put("age", 20);
+                values.put("mobile", "010-1111-5555");
+
+                getContentResolver().insert(uri, values);
+                Log.i("DBTest", "Input Data Success");
+            }
+        });
     }
 }
