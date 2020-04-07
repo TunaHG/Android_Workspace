@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Example23_SQLiteHelperActivity"></activity>
+        <activity android:name=".Example24_ContentProviderActivity"></activity>
+        <activity android:name=".Example23_SQLiteHelperActivity" />
         <activity android:name=".Example22_SQLiteBasicActivity" />
         <activity android:name=".Example21_BRNotiActivity" />
 

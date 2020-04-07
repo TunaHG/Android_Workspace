@@ -352,6 +352,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button _24_ContentProviderBtn = findViewById(R.id._24_ContentProviderBtn);
+
+        _24_ContentProviderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example24_ContentProviderActivity");
+                i.setComponent(cname);
+                startActivity(i);
+            }
+        });
     } // end of onCreate()
 
     @Override

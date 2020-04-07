@@ -147,5 +147,11 @@
             android:layout_height="wrap_content"
             android:text="23.SQLite Helper 실습"
             android:id="@+id/_23_SQLiteHelperBtn"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="24.Content Provider 실습"
+            android:id="@+id/_24_ContentProviderBtn"/>
     </LinearLayout>
 </ScrollView>
