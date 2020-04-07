@@ -2,17 +2,20 @@ package com.example.androidlectureexample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class Example22_SQLiteBasicActivity extends AppCompatActivity {
     private EditText dbNameET;
     private EditText tableNameET;
     private EditText empNameET, empAgeET, empMobileET;
+    private TextView resultTV;
 
     SQLiteDatabase sqLiteDatabase;
 
@@ -86,6 +89,40 @@ public class Example22_SQLiteBasicActivity extends AppCompatActivity {
 
                 sqLiteDatabase.execSQL(sql);
                 Log.i("DBTest", "Record가 정상적으로 추가됨");
+
+                empNameET.setText("");
+                empAgeET.setText("");
+                empMobileET.setText("");
+            }
+        });
+
+        resultTV = findViewById(R.id.resultTV);
+
+        // Select
+        Button empSelectBtn = findViewById(R.id.empSelectBtn);
+        empSelectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String sql = "SELECT _id, name, age, mobile FROM emp";
+
+                if(sqLiteDatabase == null) {
+                    Log.i("DBTest", "Database부터 생성해야함");
+                    return;
+                }
+
+                // execSQL() : Select문이 아닌 SQL문을 실행할 경우 사용
+                // rawQuery() : Select문을 실행할 경우 사용
+                Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
+
+                while(cursor.moveToNext()){
+                    int id = cursor.getInt(0);
+                    String name = cursor.getString(1);
+                    int age = cursor.getInt(2);
+                    String mobile = cursor.getString(3);
+
+                    String result = "Record : " + id + ", " + name + ", " + age + ", " + mobile;
+                    resultTV.append(result + "\n");
+                }
             }
         });
     }
