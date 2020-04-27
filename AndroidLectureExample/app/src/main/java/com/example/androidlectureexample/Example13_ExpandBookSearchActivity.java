@@ -110,7 +110,7 @@ class MyBookInfoRunnable implements Runnable {
     public void run() {
         // Thread가 시작되면 수행하는 Network 작업
         // Web Application을 호출해서 JSON결과를 가져와서 Activity에게 전달
-        String url = "http://192.168.10.5:8080/bookSearch/bookinfo?keyword=" + keyword;
+        String url = "http://70.12.229.25:8080/bookSearch/bookinfo?keyword=" + keyword;
         try {
             // URL 객체를 생성 (Java의 URL Class)
             URL obj = new URL(url); // URL 객체의 Method를 사용하기 위해 객체로 만든다.

@@ -79,7 +79,7 @@ class MyBookDetailRunnable implements Runnable {
 
     @Override
     public void run() {
-        String url = "http://192.168.10.5:8080/bookSearch/bookDetail?bisbn=" + bisbn;
+        String url = "http://70.12.229.25:8080/bookSearch/bookDetail?bisbn=" + bisbn;
         try {
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection)obj.openConnection();
