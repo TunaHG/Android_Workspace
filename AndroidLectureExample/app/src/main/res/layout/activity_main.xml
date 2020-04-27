@@ -157,7 +157,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Arduino의 LED 제어 실습"
+            android:text="Arduino의 LED 제어 실습(개인)"
             android:id="@+id/SerialCommunicationBtn"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Arduino의 LED 제어 실습(수업)"
+            android:id="@+id/ArduinoBtn"/>
     </LinearLayout>
 </ScrollView>
