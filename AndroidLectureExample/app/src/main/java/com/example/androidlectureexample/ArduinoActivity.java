@@ -1,11 +1,16 @@
 package com.example.androidlectureexample;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -54,6 +59,15 @@ public class ArduinoActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("HandlerLeak")
+    final Handler handler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            statusTV.setText(msg.getData().getString("LED"));
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +84,7 @@ public class ArduinoActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    socket = new Socket("70.12.229.25", 9998);
+                    socket = new Socket("70.12.226.160", 9998);
 
                     br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                     pw = new PrintWriter(socket.getOutputStream());
@@ -80,6 +94,14 @@ public class ArduinoActivity extends AppCompatActivity {
                         String msg = shared.pop();
                         pw.println(msg);
                         pw.flush();
+                        String tmp;
+                        if((tmp = br.readLine()) != null){
+                            Bundle bundle = new Bundle();
+                            bundle.putString("LED", tmp);
+                            Message message = new Message();
+                            message.setData(bundle);
+                            handler.sendMessage(message);
+                        }
                     }
                 } catch (IOException e){
                     Log.i("ArduinoTest", e.toString());
