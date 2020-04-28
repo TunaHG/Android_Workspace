@@ -78,7 +78,7 @@ public class lightControlActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    socket = new Socket("70.12.226.160", 9998);
+                    socket = new Socket("70.12.226.160", 9997);
 //                    socket = new Socket("70.12.229.25", 9997);
 
                     br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
